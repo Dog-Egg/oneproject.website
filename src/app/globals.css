@@ -3,3 +3,8 @@
 /* @tailwind base; */
 @tailwind components;
 @tailwind utilities;
+
+[data-theme="dark"] body {
+  background-color: #212529;
+  color: #ffffff;
+}

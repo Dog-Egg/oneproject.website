@@ -1,5 +1,12 @@
+// import NesContainer from "@/components/nes-container";
 import dynamic from "next/dynamic";
 
+const NesContainer = dynamic(() => import("@/components/nes-container"), {
+  ssr: false,
+});
+const ThemeToggle = dynamic(() => import("@/components/theme-toggle"), {
+  ssr: false,
+});
 const Calendar = dynamic(() => import("@/components/calendar"), { ssr: false });
 const Greeting = dynamic(() => import("@/components/greeting"), { ssr: false });
 
@@ -7,11 +14,12 @@ export default async function Home() {
   const data = await fetchData();
   return (
     <div className="container my-12">
-      <header className="flex items-baseline mb-10 justify-between">
+      <header className="mb-10 flex items-baseline justify-between">
         <h1>
           <i className="nes-icon trophy is-large" />
           <Greeting className="ml-4" />
         </h1>
+        <ThemeToggle />
       </header>
       <main>
         <h2 className="mb-8">
@@ -22,25 +30,27 @@ export default async function Home() {
         </h2>
         <ol className="list-none space-y-8 p-0">
           {data.user.pinnedItems.nodes.map((n) => (
-            <li className="nes-container is-rounded" key={n.name}>
-              <a href={n.homepageUrl || n.url} target="_blank">
-                <h3>{n.name}</h3>
-              </a>
-              {n.description && <p>{n.description}</p>}
+            <li key={n.name}>
+              <NesContainer>
+                <a href={n.homepageUrl || n.url} target="_blank">
+                  <h3>{n.name}</h3>
+                </a>
+                {n.description && <p>{n.description}</p>}
 
-              <div className="flex space-y-4 md:space-y-0 flex-col md:flex-row md:justify-between md:items-center text-sm">
-                <div>
-                  <span className="mr-2">last update:</span>
-                  <span>
-                    <Calendar date={n.pushedAt} />
-                  </span>
-                </div>
+                <div className="flex flex-col space-y-4 text-sm md:flex-row md:items-center md:justify-between md:space-y-0">
+                  <div>
+                    <span className="mr-2">last update:</span>
+                    <span>
+                      <Calendar date={n.pushedAt} />
+                    </span>
+                  </div>
 
-                <div>
-                  <span className="mr-2">{n.stargazerCount}</span>
-                  <i className="nes-icon star is-small" />
+                  <div>
+                    <span className="mr-2">{n.stargazerCount}</span>
+                    <i className="nes-icon star is-small" />
+                  </div>
                 </div>
-              </div>
+              </NesContainer>
             </li>
           ))}
         </ol>
