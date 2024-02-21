@@ -13,13 +13,12 @@ const Greeting = dynamic(() => import("@/components/greeting"), { ssr: false });
 export default async function Home() {
   const data = await fetchData();
   return (
-    <div className="container my-12">
-      <header className="mb-10 flex items-baseline justify-between">
+    <div className="container py-12">
+      <header className="mb-10">
         <h1>
           <i className="nes-icon trophy is-large" />
           <Greeting className="ml-4" />
         </h1>
-        <ThemeToggle />
       </header>
       <main>
         <h2 className="mb-8">
@@ -55,6 +54,7 @@ export default async function Home() {
           ))}
         </ol>
       </main>
+      <ThemeToggle className="md:fixed md:bottom-12 md:right-14" />
     </div>
   );
 }
