@@ -1,10 +1,32 @@
-@import "nes.css/css/nes.css";
-
-/* @tailwind base; */
+@tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-[data-theme="dark"] body {
-  background-color: #212529;
-  color: #ffffff;
+@layer base {
+  :root {
+    --accent: 133, 62, 255;
+    --accent-gradient: linear-gradient(
+      45deg,
+      rgb(var(--accent)),
+      #f76cc6 30%,
+      white 60%
+    );
+    --popover: #fff;
+    --popover-foreground: #000;
+  }
+
+  .dark {
+    --background: rgb(9, 9, 11);
+    --popover: var(--background);
+    --popover-foreground: #fff;
+    background-color: var(--background);
+  }
+}
+
+h1 strong {
+  background-image: var(--accent-gradient);
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-size: 400%;
+  background-position: 0%;
 }

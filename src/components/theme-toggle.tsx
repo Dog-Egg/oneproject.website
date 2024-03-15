@@ -1,23 +1,39 @@
 "use client";
-import clsx from "clsx";
+
+import * as React from "react";
+import { MoonIcon, SunIcon } from "@radix-ui/react-icons";
 import { useTheme } from "next-themes";
 
-const sequence = ["light", "dark", "system"];
+import { Button } from "@/components/button";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/dropdown-menu";
 
-export default function ThemeToggle({ className }: { className?: string }) {
-  const { theme, setTheme } = useTheme();
+export default function ThemeToggle() {
+  const { setTheme } = useTheme();
+
   return (
-    <button
-      className={clsx("nes-btn text-xs", className)}
-      onClick={() => {
-        let index = sequence.findIndex((e) => e === theme) + 1;
-        if (index === sequence.length) {
-          index = 0;
-        }
-        setTheme(sequence[index]);
-      }}
-    >
-      {theme === "light" ? "ON" : theme === "dark" ? "OFF" : "AUTO"}
-    </button>
+    <DropdownMenu>
+      <DropdownMenuTrigger asChild>
+        <Button>
+          <SunIcon className="dark:hidden" />
+          <MoonIcon className="hidden dark:inline-block" />
+        </Button>
+      </DropdownMenuTrigger>
+      <DropdownMenuContent align="end">
+        <DropdownMenuItem onClick={() => setTheme("light")}>
+          Light
+        </DropdownMenuItem>
+        <DropdownMenuItem onClick={() => setTheme("dark")}>
+          Dark
+        </DropdownMenuItem>
+        <DropdownMenuItem onClick={() => setTheme("system")}>
+          System
+        </DropdownMenuItem>
+      </DropdownMenuContent>
+    </DropdownMenu>
   );
 }
