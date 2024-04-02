@@ -98,7 +98,7 @@ export default async function Home() {
 
       <div>
         <h2 className="mb-4 mt-8 text-2xl font-semibold">✨ Skills</h2>
-        <div className="lg:grid-cols-16 grid grid-cols-10 gap-2 md:grid-cols-12">
+        <div className="grid grid-cols-10 gap-2 md:grid-cols-12 lg:grid-cols-16">
           {skills.map((item) => (
             <a
               key={item.i}
@@ -294,6 +294,12 @@ const skills: Array<{
     url: "https://code.visualstudio.com/",
     Icon: require("@/skill-icons/VSCode-Light.svg").default,
     IconDark: require("@/skill-icons/VSCode-Dark.svg").default,
+  },
+  {
+    i: "ansible",
+    url: "https://www.ansible.com/",
+    Icon: require("@/skill-icons/Ansible.svg").default,
+    IconDark: require("@/skill-icons/Ansible.svg").default,
   },
 ].sort((a, b) => {
   if (a.i < b.i) {
