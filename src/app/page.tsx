@@ -72,8 +72,9 @@ export default async function Home() {
                         <Calendar date={item.pushedAt} />
                       </span>
                       <span className="ml-auto flex items-center">
-                        {item.stargazerCount}
-                        <StarIcon className="ml-1" />
+                        {/* {item.stargazerCount}
+                        <StarIcon className="ml-1" /> */}
+                        {item.object.history.totalCount} Commits
                       </span>
                     </div>
                   </div>
@@ -151,12 +152,12 @@ const skills: Array<{
     Icon: require("@/skill-icons/CSS.svg").default,
     IconDark: require("@/skill-icons/CSS.svg").default,
   },
-  {
-    i: "dart",
-    url: "https://dart.dev/",
-    Icon: require("@/skill-icons/Dart-Light.svg").default,
-    IconDark: require("@/skill-icons/Dart-Dark.svg").default,
-  },
+  // {
+  //   i: "dart",
+  //   url: "https://dart.dev/",
+  //   Icon: require("@/skill-icons/Dart-Light.svg").default,
+  //   IconDark: require("@/skill-icons/Dart-Dark.svg").default,
+  // },
   {
     i: "django",
     url: "https://www.djangoproject.com/",
@@ -175,12 +176,12 @@ const skills: Array<{
     Icon: require("@/skill-icons/Flask-Light.svg").default,
     IconDark: require("@/skill-icons/Flask-Dark.svg").default,
   },
-  {
-    i: "flutter",
-    url: "https://flutter.dev/",
-    Icon: require("@/skill-icons/Flutter-Light.svg").default,
-    IconDark: require("@/skill-icons/Flutter-Dark.svg").default,
-  },
+  // {
+  //   i: "flutter",
+  //   url: "https://flutter.dev/",
+  //   Icon: require("@/skill-icons/Flutter-Light.svg").default,
+  //   IconDark: require("@/skill-icons/Flutter-Dark.svg").default,
+  // },
   {
     i: "git",
     url: "https://git-scm.com/",
@@ -320,22 +321,29 @@ const fetchData = async () => {
     },
     body: JSON.stringify({
       query: `{
-      user(login: "Dog-Egg") {
-        pinnedItems(first: 20) {
-          totalCount
-          nodes {
-            ... on Repository {
-              name
-              description
-              stargazerCount
-              url
-              pushedAt
-              homepageUrl
+        user(login: "Dog-Egg") {
+          pinnedItems(first: 20) {
+            totalCount
+            nodes {
+              ... on Repository {
+                name
+                description
+                stargazerCount
+                url
+                pushedAt
+                homepageUrl
+                object(expression: "HEAD") {
+                  ... on Commit {
+                    history {
+                      totalCount
+                    }
+                  }
+                }
+              }
             }
           }
         }
-      }
-    }`,
+      }`,
     }),
   });
   return (await response.json()).data as {
@@ -348,6 +356,11 @@ const fetchData = async () => {
           pushedAt: string;
           stargazerCount: number;
           homepageUrl: string | null;
+          object: {
+            history: {
+              totalCount: number;
+            };
+          };
         }[];
       };
     };
