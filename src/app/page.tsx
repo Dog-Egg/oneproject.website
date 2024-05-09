@@ -97,6 +97,7 @@ export default async function Home() {
         </div>
       </div>
 
+      {/* skills */}
       <div>
         <h2 className="mb-4 mt-8 text-2xl font-semibold">✨ Skills</h2>
         <div className="grid grid-cols-10 gap-2 md:grid-cols-12 lg:grid-cols-16">
@@ -106,6 +107,7 @@ export default async function Home() {
               className="transition duration-100 ease-in-out hover:scale-110 focus:scale-110"
               href={item.url}
               target="_blank"
+              title={item.i}
             >
               <item.Icon className="max-h-12 max-w-12 dark:hidden" />
               <item.IconDark className="hidden max-h-12 max-w-12 dark:block" />
@@ -301,6 +303,12 @@ const skills: Array<{
     url: "https://www.ansible.com/",
     Icon: require("@/skill-icons/Ansible.svg").default,
     IconDark: require("@/skill-icons/Ansible.svg").default,
+  },
+  {
+    i: "tailwind",
+    url: "https://tailwindcss.com/",
+    Icon: require("@/skill-icons/TailwindCSS-Light.svg").default,
+    IconDark: require("@/skill-icons/TailwindCSS-Dark.svg").default,
   },
 ].sort((a, b) => {
   if (a.i < b.i) {
