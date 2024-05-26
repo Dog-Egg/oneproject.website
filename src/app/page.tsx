@@ -66,7 +66,7 @@ export default async function Home() {
                     {item.description}
                   </div>
                   <div className="mt-auto opacity-50">
-                    <div className="mt-2 flex text-sm">
+                    <div className="mt-2 flex text-xs lg:text-sm">
                       <span>
                         <span className="mr-2">Last update:</span>
                         <Calendar date={item.pushedAt} />
