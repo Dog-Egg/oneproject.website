@@ -30,3 +30,5 @@ h1 strong {
   background-size: 400%;
   background-position: 0%;
 }
+
+@import "../styles/theme-toggle-animation.css";

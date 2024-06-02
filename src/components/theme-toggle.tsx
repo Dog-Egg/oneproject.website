@@ -12,6 +12,31 @@ import {
   DropdownMenuTrigger,
 } from "@/components/dropdown-menu";
 
+function changeTheme(
+  func: () => void,
+  event: React.MouseEvent<HTMLDivElement, MouseEvent>,
+) {
+  const x = event.clientX;
+  const y = event.clientY;
+  const endRadius = Math.hypot(
+    Math.max(x, innerWidth - x),
+    Math.max(y, innerHeight - y),
+  );
+
+  document.documentElement.style.setProperty("--x", x + "px");
+  document.documentElement.style.setProperty("--y", y + "px");
+  document.documentElement.style.setProperty("--r", endRadius + "px");
+
+  if ((document as any).startViewTransition) {
+    // 如果支持就使用document.startViewTransition方法
+    (document as any).startViewTransition(() => {
+      func();
+    });
+  } else {
+    func();
+  }
+}
+
 export default function ThemeToggle() {
   const { setTheme } = useTheme();
 
@@ -24,13 +49,19 @@ export default function ThemeToggle() {
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end">
-        <DropdownMenuItem onClick={() => setTheme("light")}>
+        <DropdownMenuItem
+          onClick={(event) => changeTheme(() => setTheme("light"), event)}
+        >
           Light
         </DropdownMenuItem>
-        <DropdownMenuItem onClick={() => setTheme("dark")}>
+        <DropdownMenuItem
+          onClick={(event) => changeTheme(() => setTheme("dark"), event)}
+        >
           Dark
         </DropdownMenuItem>
-        <DropdownMenuItem onClick={() => setTheme("system")}>
+        <DropdownMenuItem
+          onClick={(event) => changeTheme(() => setTheme("system"), event)}
+        >
           System
         </DropdownMenuItem>
       </DropdownMenuContent>

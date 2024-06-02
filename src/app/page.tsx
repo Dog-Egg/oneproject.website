@@ -1,5 +1,4 @@
 /* eslint-disable @next/next/no-img-element */
-/* eslint-disable jsx-a11y/alt-text */
 
 // import NesContainer from "@/components/nes-container";
 import dynamic from "next/dynamic";
@@ -41,10 +40,12 @@ export default async function Home() {
       <img
         className="block dark:hidden"
         src="https://raw.githubusercontent.com/Dog-Egg/Resources/output/github-contribution-grid-snake.svg"
+        alt="grid-snake"
       />
       <img
         className="hidden dark:block"
         src="https://raw.githubusercontent.com/Dog-Egg/Resources/output/github-contribution-grid-snake-dark.svg"
+        alt="grid-snake-dark"
       />
 
       <div>
