@@ -49,9 +49,7 @@ export default async function Home() {
       />
 
       <div>
-        <h2 className="mb-4 mt-8 text-2xl font-semibold">
-          🛠️ Development Tools
-        </h2>
+        <h2 className="mb-4 mt-8 text-2xl font-semibold">🚀 Projects</h2>
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
           {data.user.pinnedItems.nodes.map((item, index) => (
             <a
