@@ -39,12 +39,12 @@ export default async function Home() {
 
       <img
         className="block dark:hidden"
-        src="https://raw.githubusercontent.com/Dog-Egg/Resources/output/github-contribution-grid-snake.svg"
+        src="https://cdn.jsdelivr.net/gh/Dog-Egg/contribution-grid-snakes@output/github-contribution-grid-snake.svg"
         alt="grid-snake"
       />
       <img
         className="hidden dark:block"
-        src="https://raw.githubusercontent.com/Dog-Egg/Resources/output/github-contribution-grid-snake-dark.svg"
+        src="https://cdn.jsdelivr.net/gh/Dog-Egg/contribution-grid-snakes@output/github-contribution-grid-snake-dark.svg"
         alt="grid-snake-dark"
       />
 
