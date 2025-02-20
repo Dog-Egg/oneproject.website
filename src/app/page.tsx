@@ -1,19 +1,18 @@
 /* eslint-disable @next/next/no-img-element */
 
-// import NesContainer from "@/components/nes-container";
 import dynamic from "next/dynamic";
-import {
-  StarIcon,
-  GitHubLogoIcon,
-  EnvelopeClosedIcon,
-} from "@radix-ui/react-icons";
+import { GitHubLogoIcon, EnvelopeClosedIcon } from "@radix-ui/react-icons";
 import { Button } from "@/components/button";
 import ThemeToggle from "@/components/theme-toggle";
+import { PropsWithChildren } from "react";
 
 const Calendar = dynamic(() => import("@/components/calendar"), { ssr: false });
 
 export default async function Home() {
-  const data = await fetchData();
+  const data: Data =
+    process.env.NODE_ENV === "development"
+      ? (await import("@/mockdata.json")).default.data
+      : await fetchData();
 
   return (
     <main className="container p-6">
@@ -49,21 +48,16 @@ export default async function Home() {
       />
 
       <div>
-        <h2 className="mb-4 mt-8 text-2xl font-semibold">🚀 Projects</h2>
-        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+        <H2>🚀 Projects</H2>
+        <CardGroup>
           {data.user.pinnedItems.nodes.map((item, index) => (
-            <a
-              key={index}
-              className="rounded-md bg-gray-400/10 px-4 py-3 text-current transition-colors hover:bg-gray-400/20"
-              href={item.homepageUrl || item.url}
-              target="_blank"
-            >
+            <Card key={index} link={item.homepageUrl || item.url}>
               <div className="flex h-full items-center justify-between">
                 <div className="flex h-full grow flex-col">
-                  <div className="text-lg">{item.name}</div>
-                  <div className="mt-2 text-base opacity-50">
+                  <h3 className="text-lg">{item.name}</h3>
+                  <p className="mt-2 text-base opacity-50">
                     {item.description}
-                  </div>
+                  </p>
                   <div className="mt-auto opacity-50">
                     <div className="mt-2 flex text-xs lg:text-sm">
                       <span>
@@ -71,8 +65,6 @@ export default async function Home() {
                         <Calendar date={item.pushedAt} />
                       </span>
                       <span className="ml-auto flex items-center">
-                        {/* {item.stargazerCount}
-                        <StarIcon className="ml-1" /> */}
                         {item.object.history.totalCount} Commits
                       </span>
                     </div>
@@ -91,14 +83,26 @@ export default async function Home() {
                   />
                 </div>
               </div>
-            </a>
+            </Card>
           ))}
-        </div>
+        </CardGroup>
+      </div>
+
+      <div>
+        <H2>🔌 Services</H2>
+        <CardGroup>
+          <Card link="https://logosite.oneproject.top/">
+            <section>
+              <h3 className="text-lg">Logo Service</h3>
+              <p className="mt-2 text-base opacity-50">Get the website logo.</p>
+            </section>
+          </Card>
+        </CardGroup>
       </div>
 
       {/* skills */}
       <div>
-        <h2 className="mb-4 mt-8 text-2xl font-semibold">✨ Skills</h2>
+        <H2>✨ Skills</H2>
         <div className="grid grid-cols-10 gap-2 md:grid-cols-12 lg:grid-cols-16">
           {skills.map((item) => (
             <a
@@ -321,7 +325,6 @@ const skills: Array<{
 
 const fetchData = async () => {
   const response = await fetch("https://api.github.com/graphql", {
-    cache: process.env.NODE_ENV === "development" ? "no-store" : undefined,
     method: "POST",
     headers: {
       Authorization: `bearer ${process.env.GITHUB_TOKEN}`,
@@ -353,23 +356,49 @@ const fetchData = async () => {
       }`,
     }),
   });
-  return (await response.json()).data as {
-    user: {
-      pinnedItems: {
-        nodes: {
-          name: string;
-          url: string;
-          description: string | null;
-          pushedAt: string;
-          stargazerCount: number;
-          homepageUrl: string | null;
-          object: {
-            history: {
-              totalCount: number;
-            };
+  return (await response.json()).data as Data;
+};
+
+type Data = {
+  user: {
+    pinnedItems: {
+      nodes: {
+        name: string;
+        url: string;
+        description: string | null;
+        pushedAt: string;
+        stargazerCount: number;
+        homepageUrl: string | null;
+        object: {
+          history: {
+            totalCount: number;
           };
-        }[];
-      };
+        };
+      }[];
     };
   };
 };
+
+function H2(props: PropsWithChildren) {
+  return <h2 className="mb-4 mt-8 text-2xl font-semibold">{props.children}</h2>;
+}
+
+function CardGroup(props: PropsWithChildren) {
+  return (
+    <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+      {props.children}
+    </div>
+  );
+}
+
+function Card(props: PropsWithChildren<{ link: string }>) {
+  return (
+    <a
+      className="rounded-md bg-gray-400/10 px-4 py-3 text-current transition-colors hover:bg-gray-400/20"
+      href={props.link}
+      target="_blank"
+    >
+      {props.children}
+    </a>
+  );
+}
