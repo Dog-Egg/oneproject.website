@@ -14,6 +14,11 @@ export default async function Home() {
       ? (await import("@/mockdata.json")).default.data
       : await fetchData();
 
+  // sort by pushedAt
+  data.user.pinnedItems.nodes.sort((a, b) => {
+    return Date.parse(b.pushedAt) - Date.parse(a.pushedAt);
+  });
+
   return (
     <main className="container p-6">
       <h1 className="text-5xl font-extrabold">

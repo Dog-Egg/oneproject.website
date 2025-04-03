@@ -1,76 +1,76 @@
 {
-    "data": {
-      "user": {
-        "pinnedItems": {
-          "totalCount": 5,
-          "nodes": [
-            {
-              "name": "Zangar",
-              "description": "Use pipelines to validate data",
-              "stargazerCount": 0,
-              "url": "https://github.com/Dog-Egg/Zangar",
-              "pushedAt": "2025-02-20T06:27:37Z",
-              "homepageUrl": "https://dog-egg.github.io/Zangar/",
-              "object": {
-                "history": {
-                  "totalCount": 89
-                }
-              }
-            },
-            {
-              "name": "django-oasis",
-              "description": "OpenAPI development tools with Django.",
-              "stargazerCount": 0,
-              "url": "https://github.com/Dog-Egg/django-oasis",
-              "pushedAt": "2024-11-28T10:10:48Z",
-              "homepageUrl": "https://dog-egg.github.io/django-oasis/",
-              "object": {
-                "history": {
-                  "totalCount": 116
-                }
-              }
-            },
-            {
-              "name": "scrapy-ui",
-              "description": "A web service that manages and schedules Scrapyd. 🕷️",
-              "stargazerCount": 1,
-              "url": "https://github.com/Dog-Egg/scrapy-ui",
-              "pushedAt": "2024-03-25T07:25:52Z",
-              "homepageUrl": "",
-              "object": {
-                "history": {
-                  "totalCount": 97
-                }
-              }
-            },
-            {
-              "name": "script-console",
-              "description": null,
-              "stargazerCount": 3,
-              "url": "https://github.com/Dog-Egg/script-console",
-              "pushedAt": "2022-05-04T16:46:27Z",
-              "homepageUrl": "",
-              "object": {
-                "history": {
-                  "totalCount": 34
-                }
-              }
-            },
-            {
-              "name": "browser-extension",
-              "description": null,
-              "stargazerCount": 0,
-              "url": "https://github.com/Dog-Egg/browser-extension",
-              "pushedAt": "2024-08-28T06:39:44Z",
-              "homepageUrl": "",
-              "object": {
-                "history": {
-                  "totalCount": 16
-                }
+  "data": {
+    "user": {
+      "pinnedItems": {
+        "totalCount": 5,
+        "nodes": [
+          {
+            "name": "Zangar",
+            "description": "Use pipelines to validate data",
+            "stargazerCount": 0,
+            "url": "https://github.com/Dog-Egg/Zangar",
+            "pushedAt": "2025-02-20T06:27:37Z",
+            "homepageUrl": "https://dog-egg.github.io/Zangar/",
+            "object": {
+              "history": {
+                "totalCount": 89
               }
             }
-          ]
-        }
+          },
+          {
+            "name": "django-oasis",
+            "description": "OpenAPI development tools with Django.",
+            "stargazerCount": 0,
+            "url": "https://github.com/Dog-Egg/django-oasis",
+            "pushedAt": "2025-11-28T10:10:48Z",
+            "homepageUrl": "https://dog-egg.github.io/django-oasis/",
+            "object": {
+              "history": {
+                "totalCount": 116
+              }
+            }
+          },
+          {
+            "name": "scrapy-ui",
+            "description": "A web service that manages and schedules Scrapyd. 🕷️",
+            "stargazerCount": 1,
+            "url": "https://github.com/Dog-Egg/scrapy-ui",
+            "pushedAt": "2024-03-25T07:25:52Z",
+            "homepageUrl": "",
+            "object": {
+              "history": {
+                "totalCount": 97
+              }
+            }
+          },
+          {
+            "name": "script-console",
+            "description": null,
+            "stargazerCount": 3,
+            "url": "https://github.com/Dog-Egg/script-console",
+            "pushedAt": "2022-05-04T16:46:27Z",
+            "homepageUrl": "",
+            "object": {
+              "history": {
+                "totalCount": 34
+              }
+            }
+          },
+          {
+            "name": "browser-extension",
+            "description": null,
+            "stargazerCount": 0,
+            "url": "https://github.com/Dog-Egg/browser-extension",
+            "pushedAt": "2024-08-28T06:39:44Z",
+            "homepageUrl": "",
+            "object": {
+              "history": {
+                "totalCount": 16
+              }
+            }
+          }
+        ]
       }
     }
   }
+}
