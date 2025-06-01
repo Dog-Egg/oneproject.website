@@ -6,7 +6,7 @@ import ThemeProvider from "@/components/theme-provider";
 // const font = Press_Start_2P({ weight: ["400"], subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Lee",
+  title: "I'm Lee",
 };
 
 export default function RootLayout({
