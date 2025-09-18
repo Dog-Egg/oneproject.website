@@ -34,7 +34,7 @@ export default async function Home() {
           </a>
         </Button>
         <Button className="hover:bg-[#00b0ff]" asChild>
-          <a href="mailto:294622946@qq.com">
+          <a href="mailto:sinanli713@gmail.com">
             <EnvelopeClosedIcon />
           </a>
         </Button>
