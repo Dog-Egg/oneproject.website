@@ -15,9 +15,9 @@ export default async function Home() {
       : await fetchData();
 
   // sort by pushedAt
-  data.user.pinnedItems.nodes.sort((a, b) => {
-    return Date.parse(b.pushedAt) - Date.parse(a.pushedAt);
-  });
+  // data.user.pinnedItems.nodes.sort((a, b) => {
+  //   return Date.parse(b.pushedAt) - Date.parse(a.pushedAt);
+  // });
 
   return (
     <main className="container p-6">
