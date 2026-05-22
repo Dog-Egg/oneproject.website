@@ -94,12 +94,21 @@ export default async function Home() {
       </div>
 
       <div>
-        <H2>🔌 Services</H2>
+        <H2>📱 Applications</H2>
         <CardGroup>
           <Card link="https://logosite.oneproject.top/">
             <section>
               <h3 className="text-lg">Logo Service</h3>
               <p className="mt-2 text-base opacity-50">Get the website logo.</p>
+            </section>
+          </Card>
+          <Card link="https://www.yimiwallpapers.cn/">
+            <section>
+              <h3 className="text-lg">YiMi Wallpapers</h3>
+              <p className="mt-2 text-base opacity-50">
+                Get a beautiful wallpaper ready for the next time you light up
+                your screen.
+              </p>
             </section>
           </Card>
         </CardGroup>
