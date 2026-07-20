@@ -96,10 +96,20 @@ export default async function Home() {
       <div>
         <H2>📱 Applications</H2>
         <CardGroup>
-          <Card link="https://logosite.oneproject.top/">
-            <section>
-              <h3 className="text-lg">Logo Service</h3>
-              <p className="mt-2 text-base opacity-50">Get the website logo.</p>
+          <Card link="https://newtab.oneproject.dev/">
+            <section className="flex h-full items-center justify-between">
+              <div>
+                <h3 className="text-lg">NewTab</h3>
+                <p className="mt-2 text-base opacity-50">
+                  A free, ad-free, open-source new tab extension with
+                  customizable shortcuts and smarter search.
+                </p>
+              </div>
+              <img
+                className="ml-4 size-12 shrink-0"
+                src="https://newtab.oneproject.dev/logo.svg"
+                alt="NewTab logo"
+              />
             </section>
           </Card>
           <Card link="https://www.yimiwallpapers.cn/">
